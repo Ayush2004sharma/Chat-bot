@@ -1,9 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [ react() ],
+  plugins: [react()],
+  base: '/Chat-bot/', // Set to your repository name for GitHub Pages
   server: {
     headers: {
       "Cross-Origin-Embedder-Policy": "require-corp",
@@ -16,5 +17,9 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/cdn/, '')
       }
     }
-  }
-})
+  },
+  build: {
+    outDir: 'build', // Output directory for the build
+    assetsDir: 'assets', // Folder for assets within the build
+  },
+});
